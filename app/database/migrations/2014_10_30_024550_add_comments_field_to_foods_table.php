@@ -26,7 +26,7 @@ class AddCommentsFieldToFoodsTable extends Migration {
 	{
 		Schema::table('foods', function($table) {
     		$table->dropColumn('comment');
-		};		
+		});		
 	}
 
 }
