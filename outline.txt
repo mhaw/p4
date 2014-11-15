@@ -1,0 +1,34 @@
+SpiceRack
+-ability to login
+-ability to logout
+
+-add, update, and delete recipes
+-build recipes using ingredients and steps
+
+Tables->
+
+users
+	email
+	firstname
+	lastname
+	password
+	
+	
+recipes [many to many:: users]
+	indredients
+	steps
+	serves
+	time
+	difficulty
+	picture
+	tags
+
+ingredients [many to one:: recipes]
+	amount
+	measure
+	food
+
+foods [one to many:: ingridients]
+	name
+	type
+	tags

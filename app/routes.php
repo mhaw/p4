@@ -13,21 +13,15 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
-});
-
-
-Route::get('/get-environment',function() {
-
-    echo "Environment: ".App::environment();
-
-});
-
-Route::get('/trigger-error',function() {
-
-    # Class Foobar should not exist, so this should create an error
-    $foo = new Foobar;
-
+	if(Auth::check())
+    {
+        return View::make('user.index');
+    }
+    else 
+    {
+        return View::make('home.index');
+    }
+    
 });
 
 Route::get('mysql-test', function() {
@@ -87,3 +81,145 @@ Route::get('/debug', function() {
     echo '</pre>';
 
 });
+
+
+Route::get('/add-food', function() {
+    return View::make('food-added');
+});
+
+Route::post('/add-food', function() {
+    $food = new Food();
+
+    # Set 
+    $food->name = $_POST["food_name"];
+    $food->type = $_POST["food_type"];
+
+    $food->save();
+
+    return 'A new food has been added!';
+
+});
+
+
+Route::get('/collection', function() {
+    $collection = Food::all();
+    echo Pre::render($collection);
+
+});
+
+
+Route::get('/signup',
+    array(
+        'before' => 'guest',
+        function() {
+            return View::make('home.signup');
+        }
+    )
+);
+
+Route::post('/signup', 
+    array(
+        'before' => 'csrf', 
+        function() {
+
+            $user = new User;
+            $user->email = Input::get('email');
+            $user->first_name = Input::get('firstname');
+            $user->last_name = Input::get('lastname');
+            $user->password = Hash::make(Input::get('password'));
+
+
+            # Try to add the user 
+            try {
+                $user->save();
+            }
+            # Fail
+            catch (Exception $e) {
+                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+            }
+
+            # Log the user in
+            Auth::login($user);
+
+            return Redirect::to('/')->with('flash_message', 'Welcome to SpiceRack!');
+
+        }
+    )
+);
+
+Route::get('/login',
+    array(
+        'before' => 'guest',
+        function() {
+            return View::make('home.login');
+        }
+    )
+);
+
+Route::post('/login', 
+    array(
+        'before' => 'csrf', 
+        function() {
+
+            $credentials = Input::only('email', 'password');
+
+            if (Auth::attempt($credentials, $remember = true)) {
+                return Redirect::intended('/user')->with('flash_message', 'Welcome Back!');
+            }
+            else {
+                return Redirect::to('/')->with('flash_message', 'Log in failed; please try again.');
+            }
+
+            return Redirect::to('/');
+        }
+    )
+);
+
+Route::get('/logout', function() {
+
+    Auth::logout();
+
+    return Redirect::to('/')->with('flash_message', 'Goodbye, come back soon!');
+
+});
+
+Route::get('/user',
+    array(
+        'before' => 'auth',
+        function() {
+            return View::make('user.index');
+        }
+    )
+);
+
+Route::get('/addfood',
+    array(
+        'before' => 'auth',
+        function() {
+            return View::make('foods.addfood');
+        }
+    )
+);
+
+Route::post('/addfood', 
+    array(
+        'before' => 'csrf', 
+        function() {
+
+            $food = new Food;
+            $food->name = Input::get('name');
+            $food->type = Input::get('type');
+
+            try {
+                $food->save();
+            }
+            catch (Exception $e) {
+                return Redirect::to('/addfood')->with('flash_message', 'Adding the food failed; please try again.')->withInput();
+            }
+            return Redirect::to('/addfood')->with('flash_message', 'Food Added Successfully!');
+
+        }
+    )
+);
+
+

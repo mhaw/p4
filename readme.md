@@ -19,3 +19,8 @@ Leo tellus cursus mattis taciti tellus nec sit, nam mi dapibus egestas praesent 
 ## Outside Code
 + jQuery <http://jquery.com/>
 + BootStrap <http://getbootstrap.com/>
+http://www.bootstrapzero.com/bootstrap-template/admin
+http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel
+
+
+
