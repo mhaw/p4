@@ -18,7 +18,7 @@
                     <div class="panel-heading">
                         <div class="panel-title">Add New Food</div>
                     </div>     
-                    {{ Form::open(array('url' => '/addfood', 'method' => 'POST')) }}           
+                    {{ Form::open(array('url' => 'foods', 'method' => 'POST')) }}           
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
                                         {{ Form::text('name', '', array('class' => 'form-control', 'id' => 'food_name', 'placeholder' => 'name')) }}                                   

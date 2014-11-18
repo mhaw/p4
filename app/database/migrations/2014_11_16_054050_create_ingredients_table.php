@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFoodsTable extends Migration {
+class CreateIngredientsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,17 @@ class CreateFoodsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('foods', function($table) {
+		Schema::create('ingredients', function($table) {
 			$table->increments('id');
-
 			$table->timestamps();
 
-			$table->string('name');
-			$table->string('type');
-			$table->longText('comment');
+			$table->float('quantity');
+			$table->string('measure');
+			$table->string('style');
+			$table->integer('food_id')->unsigned();
+
+			$table->foreign('food_id')->references('id')->on('foods');
+
 		});
 	}
 
@@ -30,7 +33,7 @@ class CreateFoodsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('foods');
+		Schema::drop('ingredients');
 	}
 
 }

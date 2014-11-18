@@ -83,30 +83,6 @@ Route::get('/debug', function() {
 });
 
 
-Route::get('/add-food', function() {
-    return View::make('food-added');
-});
-
-Route::post('/add-food', function() {
-    $food = new Food();
-
-    # Set 
-    $food->name = $_POST["food_name"];
-    $food->type = $_POST["food_type"];
-
-    $food->save();
-
-    return 'A new food has been added!';
-
-});
-
-
-Route::get('/collection', function() {
-    $collection = Food::all();
-    echo Pre::render($collection);
-
-});
-
 
 Route::get('/signup',
     array(
@@ -192,34 +168,7 @@ Route::get('/user',
     )
 );
 
-Route::get('/addfood',
-    array(
-        'before' => 'auth',
-        function() {
-            return View::make('foods.addfood');
-        }
-    )
-);
-
-Route::post('/addfood', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $food = new Food;
-            $food->name = Input::get('name');
-            $food->type = Input::get('type');
-
-            try {
-                $food->save();
-            }
-            catch (Exception $e) {
-                return Redirect::to('/addfood')->with('flash_message', 'Adding the food failed; please try again.')->withInput();
-            }
-            return Redirect::to('/addfood')->with('flash_message', 'Food Added Successfully!');
-
-        }
-    )
-);
-
+Route::resource('foods', 'FoodController');
+Route::resource('ingredients', 'IngredientController');
+Route::resource('recipes', 'RecipeController');
 

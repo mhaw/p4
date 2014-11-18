@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCommentsFieldToFoodsTable extends Migration {
+class AddRecipeIdFieldIngredientsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,13 @@ class AddCommentsFieldToFoodsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('foods',function($table) {
-        	$table->longText('comment');
+		Schema::table('ingredients', function($table) {
+			$table->integer('recipe_id')->unsigned();
+			
+			$table->foreign('recipe_id')->references('id')->on('recipes');
 		});
-	}
+	}			
+					
 
 	/**
 	 * Reverse the migrations.
@@ -24,9 +27,7 @@ class AddCommentsFieldToFoodsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('foods', function($table) {
-    		$table->dropColumn('comment');
-		});		
+		$table->dropColumn('recipe_id');
 	}
 
 }
