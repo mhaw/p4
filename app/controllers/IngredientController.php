@@ -2,87 +2,79 @@
 
 class IngredientController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+	public function postIndex()
 	{
-		$ingredients = Ingredient::with('food')->get(); 
-
-		return View::make('ingredients.index')->with('ingredients', $ingredients);
+		//Get records from database
+		$result = Ingredient::all();
+		 
+		//Return result to jTable
+		$jTableResult = array();
+		$jTableResult['Result'] = "OK";
+		$jTableResult['Records'] = $result->toArray();
+		return json_encode($jTableResult);
 	}
 
+	public function postCreate() {
+		//Insert record into database
+		$ingredient = new Ingredient;
+        $ingredient->quantity = Input::get('quantity');
+        $ingredient->measure = Input::get('measure');
+        $ingredient->food_id = Input::get('food_id');
+        $ingredient->style = Input::get('style');
+        $ingredient->recipe_id = Input::get('recipe_id');
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+        $ingredient->save();
+
+        $lastInsertedID = $ingredient->id;
+		 
+		//Get last inserted record (to return to jTable)
+		$result = Ingredient::find($lastInsertedID);
+		 
+		//Return result to jTable
+		$jTableResult = array();
+		$jTableResult['Result'] = "OK";
+		$jTableResult['Record'] = $result->toArray();
+		return json_encode($jTableResult);
 	}
 
+	public function postUpdate() {
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+		$id = Input::get('id');
+
+		$ingredient = Ingredient::find($id);
+		$ingredient->quantity = Input::get('quantity');
+        $ingredient->measure = Input::get('measure');
+        $ingredient->food_id = Input::get('food_id');
+        $ingredient->style = Input::get('style');
+
+        $ingredient->save();
+		 
+		//Return result to jTable
+		$jTableResult = array();
+		$jTableResult['Result'] = "OK";
+		return json_encode($jTableResult);
+
 	}
 
+	public function postDelete() {
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+		$id = Input::get('id');
+
+		$ingredient = Ingredient::find($id);
+
+		$ingredient->delete();
+
+		$jTableResult = array();
+		$jTableResult['Result'] = "OK";
+		return json_encode($jTableResult);
 	}
 
+	public function getFood() {
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
+		$sterm = Input::get('term');
+		$result = Food::where('name', 'LIKE', "%$sterm%")->get(array('id as value', 'name as label'));
+
+		return json_encode($result);
 	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-
 }
+

@@ -169,6 +169,12 @@ Route::get('/user',
 );
 
 Route::resource('foods', 'FoodController');
-Route::resource('ingredients', 'IngredientController');
 Route::resource('recipes', 'RecipeController');
+
+Route::controller('ingredients', 'IngredientController');
+
+Route::post('ingredients/create', 'IngredientController@postCreate');
+
+
+
 
