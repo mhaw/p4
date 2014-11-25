@@ -1,0 +1,224 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"auto",
+				"autocomplete"
+			],
+			[
+				"autco",
+				"autocomplete"
+			],
+			[
+				"recipe",
+				"recipe_id"
+			],
+			[
+				"int",
+				"integer"
+			],
+			[
+				"first",
+				"first_name"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/p4/app/config/app.php",
+		"/Applications/MAMP/htdocs/p4/app/views/layouts/_master.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/controllers/UserController.php",
+		"/Applications/MAMP/htdocs/p4/app/config/facebook.php",
+		"/Applications/MAMP/htdocs/p4/app/models/Profile.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_22_070701_create_profiles_table.php",
+		"/Applications/MAMP/htdocs/p4/app/models/Ingredient.php",
+		"/Applications/MAMP/htdocs/p4/app/routes.php",
+		"/Applications/MAMP/htdocs/p4/readme.md",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_17_055411_create_recipes_table.php",
+		"/Applications/MAMP/htdocs/p4/app/views/recipes/show.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/partials/sidenav.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/recipes/create.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/controllers/RecipeController.php",
+		"/Applications/MAMP/htdocs/p4/app/views/recipes/index.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/models/User.php",
+		"/Applications/MAMP/htdocs/p4/app/views/ingredients/show.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/ingredients/edit.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/ingredients/create.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/controllers/FoodController.php",
+		"/Applications/MAMP/htdocs/p4/app/controllers/IngredientController.php",
+		"/Applications/MAMP/htdocs/p4/app/models/Food.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_10_30_023239_create_foods_table.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_18_234809_create_ingredient_food_table.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_18_005358_add_recipe_id_field_ingredients_table.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_16_054050_create_ingredients_table.php",
+		"/Applications/MAMP/htdocs/p4/app/controllers/HomeController.php",
+		"/Applications/MAMP/htdocs/p4/app/views/ingredients/index.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_17_054050_create_ingredients_table.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_11_17_234809_create_ingredient_food_table.php",
+		"/Applications/MAMP/htdocs/p4/app/models/Recipe.php",
+		"/Applications/MAMP/htdocs/p4/app/models/Indredient.php",
+		"/Applications/MAMP/htdocs/p4/app/views/foods/edit.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/database/migrations/2014_10_30_024550_add_comments_field_to_foods_table.php",
+		"/Applications/MAMP/htdocs/p4/app/views/foods/index.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/foods/create.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/foods/show.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/user/index.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/home/index.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/home/signup.blade.php",
+		"/Applications/MAMP/htdocs/p4/public/css/styles.css",
+		"/Applications/MAMP/htdocs/p4/public/favicon.ico",
+		"/Applications/MAMP/htdocs/p4/app/views/partials/top.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/partials/loggedout_top.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/partials/loggedin_top.blade.php",
+		"/Applications/MAMP/htdocs/p4/app/views/home/login.blade.php",
+		"/Users/mikehaw/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/mikehaw/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"term"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "routes.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 462.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

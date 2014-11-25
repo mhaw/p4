@@ -84,97 +84,47 @@ Route::get('/debug', function() {
 
 
 
-Route::get('/signup',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('home.signup');
-        }
-    )
-);
-
-Route::post('/signup', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $user = new User;
-            $user->email = Input::get('email');
-            $user->first_name = Input::get('firstname');
-            $user->last_name = Input::get('lastname');
-            $user->password = Hash::make(Input::get('password'));
-
-
-            # Try to add the user 
-            try {
-                $user->save();
-            }
-            # Fail
-            catch (Exception $e) {
-                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
-            }
-
-            # Log the user in
-            Auth::login($user);
-
-            return Redirect::to('/')->with('flash_message', 'Welcome to SpiceRack!');
-
-        }
-    )
-);
-
-Route::get('/login',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('home.login');
-        }
-    )
-);
-
-Route::post('/login', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $credentials = Input::only('email', 'password');
-
-            if (Auth::attempt($credentials, $remember = true)) {
-                return Redirect::intended('/user')->with('flash_message', 'Welcome Back!');
-            }
-            else {
-                return Redirect::to('/')->with('flash_message', 'Log in failed; please try again.');
-            }
-
-            return Redirect::to('/');
-        }
-    )
-);
-
-Route::get('/logout', function() {
-
-    Auth::logout();
-
-    return Redirect::to('/')->with('flash_message', 'Goodbye, come back soon!');
-
-});
-
-Route::get('/user',
-    array(
-        'before' => 'auth',
-        function() {
-            return View::make('user.index');
-        }
-    )
-);
 
 Route::resource('foods', 'FoodController');
 Route::resource('recipes', 'RecipeController');
 
 Route::controller('ingredients', 'IngredientController');
 
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+
 Route::post('ingredients/create', 'IngredientController@postCreate');
 
+Route::get('facebook', function()
+{
+    return "<a href='fbauth'>Login with Facebook</a>";
+});
 
+Route::get('fbauth/{auth?}', function($auth = NULL)
+{
+    if ($auth == 'auth') {
+        try {
+            Hybrid_Endpoint::process();
+        } catch (Exception $e) {
+            return Redirect::to('fbauth');
+        }
+        return;
+    }
+
+    try {
+        $oauth = new Hybrid_Auth(app_path(). '/config/fb_auth.php');
+        $provider = $oauth->authenticate('Facebook');
+        $profile = $provider->getUserProfile();
+    }
+    catch(Exception $e) {
+        return $e->getMessage();
+    }
+    echo 'Welcome ' . $profile->firstName . ' '. $profile->lastName . '<br>';
+    echo 'Your email: ' . $profile->email . '<br>';
+    dd($profile);
+});
 
 

@@ -22,6 +22,7 @@ Leo tellus cursus mattis taciti tellus nec sit, nam mi dapibus egestas praesent 
 http://www.bootstrapzero.com/bootstrap-template/admin
 http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel
 https://github.com/hikalkan/jtable
+https://github.com/SammyK/LaravelFacebookSdk
 
 
 
