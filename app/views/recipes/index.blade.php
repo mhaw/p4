@@ -32,6 +32,9 @@ index.blade.php
 						<td>{{ $recipe->name }}</td>
 						<td>{{ $recipe->servings }}</td>
 						<td>{{ $recipe->prep_time }}</td>
+						<td>
+						<a class="btn btn-small btn-success" href="recipes/{{ $recipe->id }}">Show</a>
+                		<a class="btn btn-small btn-info" href="recipes/{{ $recipe->id }}/edit">Edit</a>
 					</tr>
 					@endforeach
 				</tbody>

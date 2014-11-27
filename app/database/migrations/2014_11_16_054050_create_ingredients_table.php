@@ -19,9 +19,7 @@ class CreateIngredientsTable extends Migration {
 			$table->float('quantity');
 			$table->string('measure');
 			$table->string('style');
-			$table->integer('food_id')->unsigned();
-
-			$table->foreign('food_id')->references('id')->on('foods');
+			$table->string('food');
 
 		});
 	}

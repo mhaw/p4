@@ -47,6 +47,7 @@
 
                             <div style="margin-bottom: 25px" class="input-group">
                                         {{ Form::label('private', 'Private?') }}
+                                        {{ Form::hidden('private', false) }}
                                         {{ Form::checkbox('private', 'true') }}
                                     </div>
 

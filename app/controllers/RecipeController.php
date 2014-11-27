@@ -77,7 +77,9 @@ class RecipeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$recipe = Recipe::find($id);
+
+		return View::make('recipes.edit')->with('recipe', $recipe);
 	}
 
 
@@ -89,7 +91,15 @@ class RecipeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$recipe = Recipe::find($id);
+		$recipe->name = Input::get('name');
+        $recipe->servings = Input::get('servings');
+        $recipe->prep_time = Input::get('prep_time');
+        $recipe->steps = Input::get('steps');
+        $recipe->notes = Input::get('notes');
+        $recipe->save();
+
+		return Redirect::back()->with('flash_message', 'Recipe Updated Successfully!');
 	}
 
 

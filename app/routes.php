@@ -82,13 +82,10 @@ Route::get('/debug', function() {
 
 });
 
-
-
-
-Route::resource('foods', 'FoodController');
 Route::resource('recipes', 'RecipeController');
 
 Route::controller('ingredients', 'IngredientController');
+Route::post('ingredients/create', 'IngredientController@postCreate');
 
 Route::get('/signup','UserController@getSignup' );
 Route::get('/login', 'UserController@getLogin' );
@@ -96,7 +93,7 @@ Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
 
-Route::post('ingredients/create', 'IngredientController@postCreate');
+
 
 Route::get('facebook', function()
 {

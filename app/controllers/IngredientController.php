@@ -19,7 +19,7 @@ class IngredientController extends \BaseController {
 		$ingredient = new Ingredient;
         $ingredient->quantity = Input::get('quantity');
         $ingredient->measure = Input::get('measure');
-        $ingredient->food_id = Input::get('food_id');
+        $ingredient->food = Input::get('food');
         $ingredient->style = Input::get('style');
         $ingredient->recipe_id = Input::get('recipe_id');
 
@@ -44,7 +44,7 @@ class IngredientController extends \BaseController {
 		$ingredient = Ingredient::find($id);
 		$ingredient->quantity = Input::get('quantity');
         $ingredient->measure = Input::get('measure');
-        $ingredient->food_id = Input::get('food_id');
+        $ingredient->food = Input::get('food');
         $ingredient->style = Input::get('style');
 
         $ingredient->save();
@@ -72,7 +72,7 @@ class IngredientController extends \BaseController {
 	public function getFood() {
 
 		$sterm = Input::get('term');
-		$result = Food::where('name', 'LIKE', "%$sterm%")->get(array('id as value', 'name as label'));
+		$result = Ingredient::where('food', 'LIKE', "%$sterm%")->get(array('id as value', 'food as label'));
 
 		return json_encode($result);
 	}

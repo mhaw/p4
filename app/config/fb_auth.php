@@ -1,6 +1,6 @@
 <?php
 return array(
-    "base_url" => "http://p4.mikehaw.me/fbauth/auth",
+    "base_url" => "http://localhost/fbauth/auth",
     "providers" => array (
         "Facebook" => array (
             "enabled"  => TRUE,
