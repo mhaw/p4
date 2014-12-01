@@ -1,12 +1,17 @@
+
+
 <script type="text/javascript">
+
+
     $(document).ready(function () {
+
         $('#IngredientTableContainer').jtable({
             messages: {
                 addNewRecord: 'New Ingredient'
             },
             title: 'Table of Ingredients',
             actions: {
-                listAction: '/ingredients',
+                listAction: '/ingredients?recipe_id={{ $recipe->id }}',
                 createAction: '/ingredients/create?recipe_id={{ $recipe->id }}',
                 updateAction: '/ingredients/update',
                 deleteAction: '/ingredients/delete'
@@ -52,6 +57,7 @@
             },
             formCreated: function(event, data)
             {
+
                 data.form.find('input[name=food]').autocomplete({
                     source: "/../../ingredients/food",
                     minLength: 2,
@@ -60,8 +66,21 @@
                 $('#autocomplete').val(ui.item.label);
                 this.value = ui.item.label;
                 $('#autocomplete_val').val(ui.item.value);
-            }
+                }
                 });
+
+                data.form.find('input[name="quantity"]').addClass('validate[required,custom[number]]');
+                data.form.find('input[name="food"]').addClass('validate[required,custom[onlyLetterSp]');
+                data.form.validationEngine();
+
+                
+            },
+            formSubmitting: function(event, data) { 
+                return data.form.validationEngine('validate');
+            },
+            formClosed: function(event, data) {
+                data.form.validationEngine('hide');
+                data.form.validationEngine('detach');
             }
     });
         $('#IngredientTableContainer').jtable('load');

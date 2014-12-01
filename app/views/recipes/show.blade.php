@@ -29,12 +29,10 @@
             		<strong>Servings:</strong> {{ $recipe->servings }} <br>
             		<strong>Prep Time (in minutes):</strong> {{ $recipe->prep_time }} <br>
             		<strong>Steps:</strong> <br>
-                    {{ $recipe->steps }}
+                    {{ nl2br($recipe->steps) }}
 
         		</p>
 
-                <input id="autocomplete">
-                <input id="autocomplete_val" name="food_id">
 			</div>
 		</div>
 	</div>

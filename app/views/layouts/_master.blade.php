@@ -8,16 +8,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+
     <!-- jTable style -->
     <link href="{{ asset('jtable/themes/metro/darkgray/jtable.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
     <!-- jTable script file -->
     <script src="{{ asset('jtable/jquery.jtable.min.js') }}" type="text/javascript"></script>
-    <title></title>
+    <title>@yield('title')</title>
+
+    <!-- jTable validation -->
+    <link href="{{ asset('validationEngine/css/validationEngine.jquery.css') }}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{{ asset('validationEngine/js/jquery.validationEngine.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('validationEngine/js/jquery.validationEngine-en.js') }}"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -48,9 +53,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li> 
-        <li><a href="#">Page 3</a></li> 
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li> 
+        <li><a href="#"></a></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -63,7 +68,11 @@
       </ul>
     </div>
   </div>
+
+
 </nav>
+
+
         
 <div class="container-fluid">
       <div class="row">
@@ -71,14 +80,17 @@
       </div>
 </div>
 
-      
+
 <div class="container-fluid">
     <div class="row">
         @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+        <div class='flash-message'>{{ Session::get('flash_message') }}<br>
+        @foreach($errors->all() as $message) 
+        <div class='error'>{{ $message }}</div>
+        @endforeach</div>
         @endif
     </div>
 </div>
-
+      
   </body>
 </html>

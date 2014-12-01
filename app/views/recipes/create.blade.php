@@ -21,7 +21,7 @@
                     {{ Form::open(array('url' => 'recipes', 'method' => 'POST')) }}           
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-plus"></i></span>
-                                        {{ Form::text('name', '', array('class' => 'form-control', 'id' => 'name', 'placeholder' => 'Give the recip e a name... ')) }}                                   
+                                        {{ Form::text('name', '', array('class' => 'form-control', 'id' => 'name', 'placeholder' => 'Give the recipe a name... ')) }}                                   
 
                                     </div>
                                 

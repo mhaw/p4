@@ -16,7 +16,23 @@ class UserController extends BaseController {
     }
 
     public function postSignup() {
-    	$user = new User;
+    	
+        $rules = array(
+            'email' => 'email|unique:users,email',
+            'password' => 'min:6'
+            );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if($validator->fails()) {
+
+        return Redirect::to('/signup')
+        ->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+        ->withInput()
+        ->withErrors($validator);
+        }
+
+        $user = new User;
         $user->email = Input::get('email');
         $user->first_name = Input::get('firstname');
         $user->last_name = Input::get('lastname');

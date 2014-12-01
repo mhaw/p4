@@ -2,10 +2,16 @@
 
 class IngredientController extends \BaseController {
 
+	public function __construct() {
+		$this->beforeFilter('auth');
+	}
+
 	public function postIndex()
 	{
+		$recipe_id = Input::get('recipe_id');
+
 		//Get records from database
-		$result = Ingredient::all();
+		$result = Ingredient::where('recipe_id', '=', $recipe_id)->get();
 		 
 		//Return result to jTable
 		$jTableResult = array();
@@ -72,7 +78,7 @@ class IngredientController extends \BaseController {
 	public function getFood() {
 
 		$sterm = Input::get('term');
-		$result = Ingredient::where('food', 'LIKE', "%$sterm%")->get(array('id as value', 'food as label'));
+		$result = Ingredient::where('food', 'LIKE', "%$sterm%")->groupBy('food')->get(array('id as value', 'food as label'));
 
 		return json_encode($result);
 	}

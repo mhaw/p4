@@ -2,6 +2,10 @@
 
 class RecipeController extends \BaseController {
 
+	public function __construct() {
+		$this->beforeFilter('auth');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,7 +13,9 @@ class RecipeController extends \BaseController {
 	 */
 	public function index()
 	{
-		$recipes = Recipe::all();
+		$user_id = Auth::user()->getId();
+
+		$recipes = Recipe::where('user_id', '=', $user_id)->get();
 
 		return View::make('recipes.index')->with('recipes', $recipes);
 	}
@@ -33,6 +39,23 @@ class RecipeController extends \BaseController {
 	 */
 	public function store()
 	{
+			$rules = array(
+            'name' => 'required',
+            'servings' => 'required|numeric',
+    		'prep_time' => 'required|numeric',
+            'steps' => 'required'
+            );
+
+        	$validator = Validator::make(Input::all(), $rules);
+
+        	if($validator->fails()) {
+
+        	return Redirect::to('/recipes/create')
+        	->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+        	->withInput()
+        	->withErrors($validator);
+        	}
+
 			$recipe = new Recipe;
             $recipe->name = Input::get('name');
             $recipe->servings = Input::get('servings');
@@ -91,6 +114,24 @@ class RecipeController extends \BaseController {
 	 */
 	public function update($id)
 	{
+
+		$rules = array(
+        'name' => 'required',
+        'servings' => 'required|numeric',
+		'prep_time' => 'required|numeric',
+        'steps' => 'required'
+        );
+
+    	$validator = Validator::make(Input::all(), $rules);
+
+    	if($validator->fails()) {
+
+    	return Redirect::back()
+    	->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+    	->withInput()
+    	->withErrors($validator);
+    	}
+
 		$recipe = Recipe::find($id);
 		$recipe->name = Input::get('name');
         $recipe->servings = Input::get('servings');
