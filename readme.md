@@ -25,6 +25,12 @@ https://github.com/hikalkan/jtable
 https://github.com/SammyK/LaravelFacebookSdk
 https://github.com/posabsolute/jQuery-Validation-Engine
 
+## To-Do
++ ~~Food autocomplete should only pull in unique values~~
++ ~~Form Validation~~
++ Add CSRF protection to jTable
++ Get Facebook login/user creation working
+
 
 
 
