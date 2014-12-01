@@ -48,11 +48,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="#">SpiceRack</a>
+      <a class="navbar-brand" href="/">SpiceRack</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/">Home</a></li>
         <li><a href="#"></a></li>
         <li><a href="#"></a></li> 
         <li><a href="#"></a></li> 
@@ -75,22 +75,28 @@
 
         
 <div class="container-fluid">
+          <div class="row">
+        @if(Session::get('flash_message'))
+        <div class='alert alert-info' role="alert">{{ Session::get('flash_message') }}<br>
+        @foreach($errors->all() as $message) 
+        {{ $message }}<br>
+        @endforeach</div>
+        @endif
+    </div>
+
       <div class="row">
       @yield('content')
       </div>
 </div>
 
+    
 
-<div class="container-fluid">
-    <div class="row">
-        @if(Session::get('flash_message'))
-        <div class='flash-message'>{{ Session::get('flash_message') }}<br>
-        @foreach($errors->all() as $message) 
-        <div class='error'>{{ $message }}</div>
-        @endforeach</div>
-        @endif
-    </div>
-</div>
+    <footer class="footer">
+
+    </footer>
+
+
+
       
   </body>
 </html>
