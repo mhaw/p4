@@ -51,7 +51,7 @@ class RecipeController extends \BaseController {
         	if($validator->fails()) {
 
         	return Redirect::to('/recipes/create')
-        	->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+        	->with('flash_message', 'Failed to add recipe; please fix the errors listed below.')
         	->withInput()
         	->withErrors($validator);
         	}
@@ -127,7 +127,7 @@ class RecipeController extends \BaseController {
     	if($validator->fails()) {
 
     	return Redirect::back()
-    	->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+    	->with('flash_message', 'Update failed; please fix the errors listed below.')
     	->withInput()
     	->withErrors($validator);
     	}

@@ -1,7 +1,7 @@
 @extends('layouts._master')
 
 @section('title')
-	SpiceRack - Food - Edit - {{ $recipe->name }}
+	SpiceRack - Recipe - Edit - {{ $recipe->name }}
 @stop
 
 @section('head')
@@ -59,6 +59,18 @@
                                 </div>
                     		{{ Form::close() }} 
 			</div>
+                    <br>
+                    <br>
+                    <h4>Tags</h4>
+                    @foreach ($recipe->tags as $tag)
+                    {{ $tag->tag }}
+                    @endforeach
+                    <br>
+                    {{ Form::open(array('url' => 'tags/addtag', 'method' => 'POST')) }}           
+                        {{ Form::text('tag', '', array('class' => 'form-control', 'id' => 'tag', 'placeholder' => 'Tag name... ')) }} 
+                        {{ Form::hidden('recipe', $recipe->id, array('id' => 'recipe')) }}                                    
+                    {{ Form::submit('Add Tag', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
+
 			</div>
 		</div>  
         <br>

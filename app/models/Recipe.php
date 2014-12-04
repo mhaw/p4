@@ -6,4 +6,8 @@ class Recipe extends Eloquent {
 		return $this->hasMany('Ingredient');
 	}
 
+	public function tags() {
+        return $this->belongsToMany('Tag');
+    }
+
 }

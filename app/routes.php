@@ -26,8 +26,13 @@ Route::get('/', function()
 
 Route::resource('recipes', 'RecipeController');
 
-Route::controller('ingredients', 'IngredientController');
 Route::post('ingredients/create', 'IngredientController@postCreate');
+Route::controller('ingredients', 'IngredientController');
+
+Route::post('tags/addtag', 'TagController@addtag');
+Route::resource('tags', 'TagController');
+
+
 
 Route::get('/signup','UserController@getSignup' );
 Route::get('/login', 'UserController@getLogin' );

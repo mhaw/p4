@@ -11,8 +11,7 @@ index.blade.php
 @stop
 
 @section('content')
-	<br>
-	<h2>Welcome to SpiceRack!</h2>
+	<div style="text-align: center"><img src="{{ asset('images/sr_logo.png') }}"></div>
 @stop
 
 @stop

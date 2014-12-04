@@ -31,6 +31,13 @@
             		<strong>Steps:</strong> <br>
                     {{ nl2br($recipe->steps) }}
 
+                    <br>
+                    <br>
+                    <h4>Tags</h4>
+                    @foreach ($recipe->tags as $tag)
+                    {{ $tag->tag }}
+                    @endforeach
+
         		</p>
 
 			</div>

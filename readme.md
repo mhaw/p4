@@ -24,12 +24,15 @@ http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel
 https://github.com/hikalkan/jtable
 https://github.com/SammyK/LaravelFacebookSdk
 https://github.com/posabsolute/jQuery-Validation-Engine
+http://www.squarespace.com/logo/
 
 ## To-Do
 + ~~Food autocomplete should only pull in unique values~~
 + ~~Form Validation~~
 + Add CSRF protection to jTable
 + Get Facebook login/user creation working
++ Add recipe tags
++ ~~Fix flash messages display~~
 
 
 
