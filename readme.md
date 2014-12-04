@@ -31,9 +31,9 @@ http://www.squarespace.com/logo/
 + ~~Form Validation~~
 + Add CSRF protection to jTable
 + Get Facebook login/user creation working
-+ Add recipe tags
++ ~~Add recipe tags~~
 + ~~Fix flash messages display~~
-+ ~~Recipe Tags~~
+
 
 
 
