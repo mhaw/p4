@@ -33,6 +33,7 @@ http://www.squarespace.com/logo/
 + Get Facebook login/user creation working
 + Add recipe tags
 + ~~Fix flash messages display~~
++ ~~Recipe Tags~~
 
 
 
