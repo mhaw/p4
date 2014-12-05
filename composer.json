@@ -6,8 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"paste/pre": "dev-master",
-		"facebook/php-sdk-v4" : "4.0.*",
-		"hybridauth/hybridauth": "*"
+		"adamwathan/eloquent-oauth": "dev-master"
+
 	},
 	"autoload": {
 		"classmap": [

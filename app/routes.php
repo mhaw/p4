@@ -1,5 +1,8 @@
 <?php
 
+use \AdamWathan\EloquentOAuth\ApplicationRejectedException;
+use \AdamWathan\EloquentOAuth\InvalidAuthorizationCodeException;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -40,38 +43,31 @@ Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
 
-
-
-Route::get('facebook', function()
-{
-    return "<a href='fbauth'>Login with Facebook</a>";
+Route::get('facebook/authorize', function() {
+    return OAuth::authorize('facebook');
 });
 
-Route::get('fbauth/{auth?}', function($auth = NULL)
-{
-    if ($auth == 'auth') {
-        try {
-            Hybrid_Endpoint::process();
-        } catch (Exception $e) {
-            return Redirect::to('fbauth');
-        }
-        return;
-    }
-
+Route::get('facebook/login', function() {
     try {
-        $oauth = new Hybrid_Auth(app_path(). '/config/fb_auth.php');
-        $provider = $oauth->authenticate('Facebook');
-        $profile = $provider->getUserProfile();
-    }
-    catch(Exception $e) {
-        return $e->getMessage();
+        OAuth::login('facebook', function($user, $details) {
+            $user->email = $details->email;
+            $user->first_name = $details->firstName;
+            $user->last_name = $details->lastName;
+            $user->save();
+    });
+
+    } catch (ApplicationRejectedException $e) {
+        // User rejected application
+    } catch (InvalidAuthorizationCodeException $e) {
+        // Authorization was attempted with invalid
+        // code,likely forgery attempt
     }
 
-    
-    
-    echo 'Welcome ' . $profile->firstName . ' '. $profile->lastName . '<br>';
-    echo 'Your email: ' . $profile->email . '<br>';
-    dd($profile);
+    // Current user is now available via Auth facade
+    $user = Auth::user();
+
+    return Redirect::to('/../')->with('flash_message', 'Welcome to SpiceRack!');
 });
+
 
 

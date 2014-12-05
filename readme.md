@@ -22,9 +22,9 @@ Leo tellus cursus mattis taciti tellus nec sit, nam mi dapibus egestas praesent 
 http://www.bootstrapzero.com/bootstrap-template/admin
 http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel
 https://github.com/hikalkan/jtable
-https://github.com/SammyK/LaravelFacebookSdk
 https://github.com/posabsolute/jQuery-Validation-Engine
 http://www.squarespace.com/logo/
+https://github.com/adamwathan/eloquent-oauth
 
 ## To-Do
 + ~~Food autocomplete should only pull in unique values~~
@@ -33,6 +33,9 @@ http://www.squarespace.com/logo/
 + Get Facebook login/user creation working
 + ~~Add recipe tags~~
 + ~~Fix flash messages display~~
++ Private vs. Public Recipes
+
+
 
 
 

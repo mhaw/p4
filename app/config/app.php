@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'AdamWathan\EloquentOAuth\EloquentOAuthServiceProvider',
 
 	),
 
@@ -189,6 +190,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Pre'             => 'Paste\Pre',
+		'OAuth' 		  => 'AdamWathan\EloquentOAuth\Facades\OAuth',
 
 	),
 
