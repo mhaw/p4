@@ -9,7 +9,12 @@ class TagController extends \BaseController {
 	 */
 	public function index()
 	{
-		$tags = Tag::all();
+		$user_id = Auth::user()->getId();
+		$recipes_ids = Recipe::where('user_id', '=', $user_id)->lists('id');
+
+		$tag_ids = DB::table('recipe_tag')->whereIn('recipe_id', $recipes_ids)->lists('tag_id');
+
+		$tags = DB::table('tags')->whereIn('id', $tag_ids)->get(); 
 
 		return View::make('tags.index')->with('tags', $tags);
 	}
@@ -37,23 +42,23 @@ class TagController extends \BaseController {
 			'tag' => 'required'
 		);
 
-		$validator = Validator::make(Input::all(), $rules); 
+		$validator = Validator::make(Input::all(), $rules);
 
 		if ($validator->fails()) {
-            return Redirect::to('tags/create')
-            ->withErrors($validator)
-            ->withInput();
-        } 
-        else {
-            // store
-            $tag = new Tag;
-            $tag->tag      = Input::get('tag');
-            $tag->save();
+			return Redirect::to('tags/create')
+			->withErrors($validator)
+			->withInput();
+		}
+		else {
+			// store
+			$tag = new Tag;
+			$tag->tag      = Input::get('tag');
+			$tag->save();
 
-            // redirect
-            Session::flash('message', 'Successfully created tag!');
-            return Redirect::to('tags');
-        }
+			// redirect
+			Session::flash('message', 'Successfully created tag!');
+			return Redirect::to('tags');
+		}
 	}
 
 	/**
@@ -93,22 +98,22 @@ class TagController extends \BaseController {
 	public function update($id)
 	{
 		$rules = array(
-        'tag' => 'required',
-        );
+			'tag' => 'required',
+		);
 
-    	$validator = Validator::make(Input::all(), $rules);
+		$validator = Validator::make(Input::all(), $rules);
 
-    	if($validator->fails()) {
+		if($validator->fails()) {
 
-    	return Redirect::back()
-    	->with('flash_message', 'Update failed; please fix the errors listed below.')
-    	->withInput()
-    	->withErrors($validator);
-    	}
+			return Redirect::back()
+			->with('flash_message', 'Update failed; please fix the errors listed below.')
+			->withInput()
+			->withErrors($validator);
+		}
 
 		$tag = Tag::find($id);
 		$tag->tag = Input::get('tag');
-        $tag->save();
+		$tag->save();
 
 		return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
 	}
@@ -132,7 +137,7 @@ class TagController extends \BaseController {
 		$exist_tag = Tag::where('tag', 'LIKE', Input::get('tag'))->first();
 
 		if (is_null($exist_tag)) {
-		    $tag = new Tag;
+			$tag = new Tag;
 			$tag->tag= Input::get('tag');
 			$tag->save();
 
@@ -140,9 +145,9 @@ class TagController extends \BaseController {
 
 			return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
 		} else {
-		    $recipe->tags()->save($exist_tag);
+			$recipe->tags()->save($exist_tag);
 
-		    return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
+			return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
 		}
 	}
 

@@ -68,7 +68,7 @@
                                 <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
                                     
                                     <div class="col-md-offset-3 col-md-9">
-                                        {{ Form::submit('Sign Up with Facebook', array('class' => 'btn btn-primary', 'id' => 'btn-fbsignup', 'href' => '/facebook/authorize')) }}
+                                        <a id="btn-fblogin" href="/facebook/authorize" class="btn btn-primary">Sign-up With Facebook</a>
                                     </div>                                           
                                         
                                 </div>

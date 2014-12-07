@@ -12,7 +12,7 @@ class IngredientController extends \BaseController {
 
 		//Get records from database
 		$result = Ingredient::where('recipe_id', '=', $recipe_id)->get();
-		 
+
 		//Return result to jTable
 		$jTableResult = array();
 		$jTableResult['Result'] = "OK";
@@ -23,19 +23,19 @@ class IngredientController extends \BaseController {
 	public function postCreate() {
 		//Insert record into database
 		$ingredient = new Ingredient;
-        $ingredient->quantity = Input::get('quantity');
-        $ingredient->measure = Input::get('measure');
-        $ingredient->food = Input::get('food');
-        $ingredient->style = Input::get('style');
-        $ingredient->recipe_id = Input::get('recipe_id');
+		$ingredient->quantity = Input::get('quantity');
+		$ingredient->measure = Input::get('measure');
+		$ingredient->food = Input::get('food');
+		$ingredient->style = Input::get('style');
+		$ingredient->recipe_id = Input::get('recipe_id');
 
-        $ingredient->save();
+		$ingredient->save();
 
-        $lastInsertedID = $ingredient->id;
-		 
+		$lastInsertedID = $ingredient->id;
+
 		//Get last inserted record (to return to jTable)
 		$result = Ingredient::find($lastInsertedID);
-		 
+
 		//Return result to jTable
 		$jTableResult = array();
 		$jTableResult['Result'] = "OK";
@@ -49,12 +49,12 @@ class IngredientController extends \BaseController {
 
 		$ingredient = Ingredient::find($id);
 		$ingredient->quantity = Input::get('quantity');
-        $ingredient->measure = Input::get('measure');
-        $ingredient->food = Input::get('food');
-        $ingredient->style = Input::get('style');
+		$ingredient->measure = Input::get('measure');
+		$ingredient->food = Input::get('food');
+		$ingredient->style = Input::get('style');
 
-        $ingredient->save();
-		 
+		$ingredient->save();
+
 		//Return result to jTable
 		$jTableResult = array();
 		$jTableResult['Result'] = "OK";
@@ -83,4 +83,3 @@ class IngredientController extends \BaseController {
 		return json_encode($result);
 	}
 }
-

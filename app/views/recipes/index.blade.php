@@ -14,15 +14,20 @@ index.blade.php
 	@include('partials.sidenav')
 
 	<div class="col-sm-9 col-md-10 main">
-		<h2>All Recipes</h2>
+		
 
-		@if ($recipes->count())
+		<div class="col-md-2 column">
+		</div>
+		<div class="col-md-8 column">
+			<h2>My Recipes</h2>
+				@if ($recipes->count())
 			<table class="table table-striped table-bordered table-hover">
 				<thread>
 					<tr>
 						<th>Name</th>
 						<th>Servings</th>
 						<th>Prep Time</th>
+						<th>Actions</th>
 					</tr>
 				</thread>
 
@@ -42,6 +47,11 @@ index.blade.php
 		@else
 			There are no recipes. 
 		@endif
+		</div>
+		<div class="col-md-2 column">
+		</div>
+
+
 	</div>
 @stop
 

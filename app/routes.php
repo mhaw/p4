@@ -15,17 +15,17 @@ use \AdamWathan\EloquentOAuth\InvalidAuthorizationCodeException;
 */
 
 Route::get('/', function()
-{
-	if(Auth::check())
-    {
-        return View::make('user.index');
-    }
-    else 
-    {
-        return View::make('home.index');
-    }
-    
-});
+	{
+		if(Auth::check())
+		{
+			return View::make('user.index');
+		}
+		else
+		{
+			return View::make('home.index');
+		}
+
+	});
 
 Route::resource('recipes', 'RecipeController');
 
@@ -42,32 +42,6 @@ Route::get('/login', 'UserController@getLogin' );
 Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
-
-Route::get('facebook/authorize', function() {
-    return OAuth::authorize('facebook');
-});
-
-Route::get('facebook/login', function() {
-    try {
-        OAuth::login('facebook', function($user, $details) {
-            $user->email = $details->email;
-            $user->first_name = $details->firstName;
-            $user->last_name = $details->lastName;
-            $user->save();
-    });
-
-    } catch (ApplicationRejectedException $e) {
-        // User rejected application
-    } catch (InvalidAuthorizationCodeException $e) {
-        // Authorization was attempted with invalid
-        // code,likely forgery attempt
-    }
-
-    // Current user is now available via Auth facade
-    $user = Auth::user();
-
-    return Redirect::to('/../')->with('flash_message', 'Welcome to SpiceRack!');
-});
-
-
-
+Route::get('/logout', 'UserController@getLogout' );
+Route::get('/facebook/authorize', 'UserController@fbAuth' );
+Route::get('/facebook/login', 'UserController@fbLogin' );

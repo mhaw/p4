@@ -14,13 +14,18 @@ index.blade.php
 	@include('partials.sidenav')
 
 	<div class="col-sm-9 col-md-10 main">
-		<h2>All Tags</h2>
+		
+		<div class="col-md-2 column">
+		</div>
+		<div class="col-md-8 column">
+		<h2>My Tags</h2>
 
-		@if ($tags->count())
+		@if ($tags)
 			<table class="table table-striped table-bordered table-hover">
 				<thread>
 					<tr>
 						<th>Name</th>
+						<th>Actions</th>
 					</tr>
 				</thread>
 
@@ -39,6 +44,9 @@ index.blade.php
 		@else
 			There are no tags. 
 		@endif
+		</div>
+		<div class="col-md-2 column">
+		</div>
 	</div>
 @stop
 

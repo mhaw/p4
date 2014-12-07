@@ -39,42 +39,42 @@ class RecipeController extends \BaseController {
 	 */
 	public function store()
 	{
-			$rules = array(
-            'name' => 'required',
-            'servings' => 'required|numeric',
-    		'prep_time' => 'required|numeric',
-            'steps' => 'required'
-            );
+		$rules = array(
+			'name' => 'required',
+			'servings' => 'required|numeric',
+			'prep_time' => 'required|numeric',
+			'steps' => 'required'
+		);
 
-        	$validator = Validator::make(Input::all(), $rules);
+		$validator = Validator::make(Input::all(), $rules);
 
-        	if($validator->fails()) {
+		if($validator->fails()) {
 
-        	return Redirect::to('/recipes/create')
-        	->with('flash_message', 'Failed to add recipe; please fix the errors listed below.')
-        	->withInput()
-        	->withErrors($validator);
-        	}
+			return Redirect::to('/recipes/create')
+			->with('flash_message', 'Failed to add recipe; please fix the errors listed below.')
+			->withInput()
+			->withErrors($validator);
+		}
 
-			$recipe = new Recipe;
-            $recipe->name = Input::get('name');
-            $recipe->servings = Input::get('servings');
-            $recipe->prep_time = Input::get('prep_time');
-            $recipe->steps = Input::get('steps');
-            $recipe->notes = Input::get('notes');
-            $recipe->public = Input::get('private');
-            if (Auth::check())
-			{
-				$recipe->user_id = Auth::user()->getId();
-			}
-            
-            try {
-                $recipe->save();
-            }
-            catch (Exception $e) {
-                return Redirect::to('/recipes')->with('flash_message', 'Adding the recipe failed; please try again.')->withInput();
-            }
-            return Redirect::to('/recipes')->with('flash_message', 'Recipe Added Successfully! Now we will add some ingredients...');
+		$recipe = new Recipe;
+		$recipe->name = Input::get('name');
+		$recipe->servings = Input::get('servings');
+		$recipe->prep_time = Input::get('prep_time');
+		$recipe->steps = Input::get('steps');
+		$recipe->notes = Input::get('notes');
+		$recipe->public = Input::get('private');
+		if (Auth::check())
+		{
+			$recipe->user_id = Auth::user()->getId();
+		}
+
+		try {
+			$recipe->save();
+		}
+		catch (Exception $e) {
+			return Redirect::to('/recipes')->with('flash_message', 'Adding the recipe failed; please try again.')->withInput();
+		}
+		return Redirect::to('/recipes')->with('flash_message', 'Recipe Added Successfully! Now we will add some ingredients...');
 	}
 
 
@@ -116,29 +116,29 @@ class RecipeController extends \BaseController {
 	{
 
 		$rules = array(
-        'name' => 'required',
-        'servings' => 'required|numeric',
-		'prep_time' => 'required|numeric',
-        'steps' => 'required'
-        );
+			'name' => 'required',
+			'servings' => 'required|numeric',
+			'prep_time' => 'required|numeric',
+			'steps' => 'required'
+		);
 
-    	$validator = Validator::make(Input::all(), $rules);
+		$validator = Validator::make(Input::all(), $rules);
 
-    	if($validator->fails()) {
+		if($validator->fails()) {
 
-    	return Redirect::back()
-    	->with('flash_message', 'Update failed; please fix the errors listed below.')
-    	->withInput()
-    	->withErrors($validator);
-    	}
+			return Redirect::back()
+			->with('flash_message', 'Update failed; please fix the errors listed below.')
+			->withInput()
+			->withErrors($validator);
+		}
 
 		$recipe = Recipe::find($id);
 		$recipe->name = Input::get('name');
-        $recipe->servings = Input::get('servings');
-        $recipe->prep_time = Input::get('prep_time');
-        $recipe->steps = Input::get('steps');
-        $recipe->notes = Input::get('notes');
-        $recipe->save();
+		$recipe->servings = Input::get('servings');
+		$recipe->prep_time = Input::get('prep_time');
+		$recipe->steps = Input::get('steps');
+		$recipe->notes = Input::get('notes');
+		$recipe->save();
 
 		return Redirect::back()->with('flash_message', 'Recipe Updated Successfully!');
 	}
