@@ -30,9 +30,10 @@ https://github.com/adamwathan/eloquent-oauth
 + ~~Food autocomplete should only pull in unique values~~
 + ~~Form Validation~~
 + Add CSRF protection to jTable
-+ Get Facebook login/user creation working
++ ~~Get Facebook login/user creation working~~
 + ~~Add recipe tags~~
 + ~~Fix flash messages display~~
++ ~~Display only tags related to logged in user and their recipes~~
 + Private vs. Public Recipes
 
 
