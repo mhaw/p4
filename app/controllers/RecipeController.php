@@ -3,6 +3,7 @@
 class RecipeController extends \BaseController {
 
 	public function __construct() {
+
 		$this->beforeFilter('auth');
 	}
 
@@ -74,7 +75,7 @@ class RecipeController extends \BaseController {
 		catch (Exception $e) {
 			return Redirect::to('/recipes')->with('flash_message', 'Adding the recipe failed; please try again.')->withInput();
 		}
-		return Redirect::to('/recipes')->with('flash_message', 'Recipe Added Successfully! Now we will add some ingredients...');
+		return Redirect::to('/recipes/'.$recipe->id)->with('flash_message', 'Recipe Added Successfully! Now we will add some ingredients...');
 	}
 
 
@@ -86,7 +87,12 @@ class RecipeController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$recipe = Recipe::find($id);
+		try {
+			$recipe = Recipe::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('tags')->with('flash_message', 'Tag not found');
+		}	
 
 		return View::make('recipes.show')->with('recipe', $recipe);
 	}
@@ -100,7 +106,12 @@ class RecipeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$recipe = Recipe::find($id);
+		try {
+			$recipe = Recipe::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('tags')->with('flash_message', 'Tag not found');
+		}	
 
 		return View::make('recipes.edit')->with('recipe', $recipe);
 	}
@@ -114,6 +125,12 @@ class RecipeController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		try {
+			$recipe = Recipe::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('tags')->with('flash_message', 'Tag not found');
+		}		
 
 		$rules = array(
 			'name' => 'required',
@@ -140,7 +157,7 @@ class RecipeController extends \BaseController {
 		$recipe->notes = Input::get('notes');
 		$recipe->save();
 
-		return Redirect::back()->with('flash_message', 'Recipe Updated Successfully!');
+		return Redirect::to('/recipes/'.$recipe->id)->with('flash_message', 'Recipe Updated Successfully!');
 	}
 
 
@@ -154,6 +171,17 @@ class RecipeController extends \BaseController {
 	{
 		//
 	}
+
+	public function postSearch(){
+		$query = Input::get('query');
+
+		$recipes = Recipe::search($query);
+
+		return View::make('recipes.search')->with('recipes', $recipes);
+
+	}
+
+
 
 
 }

@@ -23,10 +23,11 @@
                 <h2>{{ $tag->tag }}</h2>
                 <br>
             @if ($tag->recipes->count())
-            <table class="table table-striped table-bordered table-hover">
+            <table class="table table-bordered table-hover">
                 <thread>
                     <tr>
                         <th>Related Recipes</th>
+                        <th>Actions</th>
                     </tr>
                 </thread>
 

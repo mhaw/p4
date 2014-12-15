@@ -21,7 +21,7 @@ index.blade.php
 		<div class="col-md-8 column">
 			<h2>My Recipes</h2>
 				@if ($recipes->count())
-			<table class="table table-striped table-bordered table-hover">
+			<table class="table table-bordered table-hover">
 				<thread>
 					<tr>
 						<th>Name</th>

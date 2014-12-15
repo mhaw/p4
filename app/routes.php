@@ -27,6 +27,8 @@ Route::get('/', function()
 
 	});
 
+
+Route::post('recipes/search', 'RecipeController@postSearch');
 Route::resource('recipes', 'RecipeController');
 
 Route::post('ingredients/create', 'IngredientController@postCreate');

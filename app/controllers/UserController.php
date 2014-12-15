@@ -88,13 +88,11 @@ class UserController extends BaseController {
 				});
 
 		} catch (ApplicationRejectedException $e) {
-			// User rejected application
+
 		} catch (InvalidAuthorizationCodeException $e) {
-			// Authorization was attempted with invalid
-			// code,likely forgery attempt
+
 		}
 
-		// Current user is now available via Auth facade
 		$user = Auth::user();
 
 		return Redirect::to('/../')->with('flash_message', 'Welcome to SpiceRack!');

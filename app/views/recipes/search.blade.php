@@ -1,9 +1,9 @@
-index.blade.php
+search.blade.php
 
 @extends('layouts._master')
 
 @section('title')
-	SpiceRack - Tags
+	SpiceRack - Search Results
 @stop
 
 @section('head')
@@ -15,12 +15,12 @@ index.blade.php
 
 	<div class="col-sm-9 col-md-10 main">
 		
+
 		<div class="col-md-2 column">
 		</div>
 		<div class="col-md-8 column">
-		<h2>My Tags</h2>
-
-		@if ($tags)
+			<h2>Search Results</h2>
+				@if ($recipes->count())
 			<table class="table table-bordered table-hover">
 				<thread>
 					<tr>
@@ -30,24 +30,27 @@ index.blade.php
 				</thread>
 
 				<tbody>
-					@foreach($tags as $tag)
+					@foreach($recipes as $recipe)
 					<tr>
-						<td>{{ $tag->tag }}</td>
+						<td>{{ $recipe->name }}</td>
+
 						<td>
-						<a class="btn btn-small btn-success" href="tags/{{ $tag->id }}">Show</a>
-                		<a class="btn btn-small btn-info" href="tags/{{ $tag->id }}/edit">Edit</a>
+						<a class="btn btn-small btn-success" href="../recipes/{{ $recipe->id }}">Show</a>
+                		<a class="btn btn-small btn-info" href="../recipes/{{ $recipe->id }}/edit">Edit</a>
+						</td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-			<a class="btn btn-small btn-alert" href="tags/create">Add A Tag</a>
 		@else
-			There are no tags. 
+			No recipes found. 
 		@endif
 		</div>
 		<div class="col-md-2 column">
 		</div>
+
+
 	</div>
 @stop
 
-@stop 
+@stop

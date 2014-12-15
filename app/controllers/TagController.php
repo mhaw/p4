@@ -69,6 +69,8 @@ class TagController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		
+
 		$tag = Tag::find($id);
 
 		return View::make('tags.show')->with('tag', $tag);

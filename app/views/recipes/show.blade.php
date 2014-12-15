@@ -38,6 +38,10 @@
                     {{ $tag->tag }}
                     @endforeach
 
+                    <br>
+                    <br>
+                    <a class="btn btn-small btn-info" href="{{ $recipe->id }}/edit">Edit</a>
+
         		</p>
 
 			</div>

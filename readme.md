@@ -19,12 +19,12 @@ Leo tellus cursus mattis taciti tellus nec sit, nam mi dapibus egestas praesent 
 ## Outside Code
 + jQuery <http://jquery.com/>
 + BootStrap <http://getbootstrap.com/>
-http://www.bootstrapzero.com/bootstrap-template/admin
-http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel
-https://github.com/hikalkan/jtable
-https://github.com/posabsolute/jQuery-Validation-Engine
-http://www.squarespace.com/logo/
-https://github.com/adamwathan/eloquent-oauth
++ BootStrap Template <http://www.bootstrapzero.com/bootstrap-template/admin>
++ BootStrap Sign-In/Up Form <http://bootsnipp.com/snippets/featured/login-amp-signup-forms-in-panel>
++ JTable <https://github.com/hikalkan/jtable>
++ JQuery Validation Engine <https://github.com/posabsolute/jQuery-Validation-Engine>
++ Squarespace Logo Generator <http://www.squarespace.com/logo/>
++ Eloquent OAuth Package <https://github.com/adamwathan/eloquent-oauth>
 
 ## To-Do
 + ~~Food autocomplete should only pull in unique values~~
@@ -35,6 +35,10 @@ https://github.com/adamwathan/eloquent-oauth
 + ~~Fix flash messages display~~
 + ~~Display only tags related to logged in user and their recipes~~
 + Private vs. Public Recipes
++ ~~Search capabilities~~
++ Convert comma seperated tag input to mutiple tag entries
+
+
 
 
 

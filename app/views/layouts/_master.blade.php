@@ -49,14 +49,22 @@
         <span class="icon-bar"></span> 
       </button>
       <a class="navbar-brand" href="/">SpiceRack</a>
+ 
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="#"></a></li>
-        <li><a href="#"></a></li> 
-        <li><a href="#"></a></li> 
       </ul>
+      <ul class="nav navbar-nav">
+        <li>
+      {{ Form::open(array('url' => 'recipes/search', 'method' => 'POST', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}           
+      {{ Form::text('query', '', array('class' => 'form-control', 'id' => 'query')) }}                                   
+      {{ Form::submit('Search', array('class' => 'btn btn-default')) }}
+      {{ Form::close() }}
+        </li>
+      </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li>
