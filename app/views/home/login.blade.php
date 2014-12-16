@@ -28,7 +28,8 @@
                         {{ Form::open(array('url' => '/login', 'method' => 'POST')) }}           
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        {{ Form::text('email', '', array('class' => 'form-control', 'id' => 'login-username', 'placeholder' => 'username or email')) }}                                   
+                                        {{ Form::text('email', '', array('class' => 'form-control', 'id' => 'login-username', 'placeholder' => '
+                                        email')) }}                                   
 
                                     </div>
                                 

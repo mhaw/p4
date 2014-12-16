@@ -54,6 +54,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
+                                    <br>
                                       {{ Form::submit('Save', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
                                     </div>
                                 </div>
@@ -72,16 +73,14 @@
                     @endforeach
                     <br>
                     {{ Form::open(array('url' => 'tags/addtag', 'method' => 'POST')) }}           
-                        {{ Form::text('tag', '', array('class' => 'form-control', 'id' => 'tag', 'placeholder' => 'Tag name... ')) }} 
-                        {{ Form::hidden('recipe', $recipe->id, array('id' => 'recipe')) }}                                    
+                        {{ Form::text('tag', '', array('class' => 'form-control', 'id' => 'tag', 'placeholder' => 'Add tags (seperated by commas)')) }} 
+                        {{ Form::hidden('recipe', $recipe->id, array('id' => 'recipe')) }}
+                        <br>                                    
                     {{ Form::submit('Add Tag', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
                     {{ Form::close() }} 
 
 			</div>
 		</div>  
-        <br>
-        <br>  
-        <div class="well"><h4 class="text-center">View All Recipes - Add New Recipe</h4></div>
 	</div>
 @stop
 

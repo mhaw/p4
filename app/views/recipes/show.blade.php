@@ -40,7 +40,6 @@
                     <br>
                     <h4>Tags</h4>
                     @foreach ($recipe->tags as $tag)
-                    <a href=""><span class="glyphicon glyphicon-remove-circle"></span></a>
                     {{ $tag->tag }}
                     @endforeach
 

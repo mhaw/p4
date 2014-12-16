@@ -170,7 +170,7 @@ class TagController extends \BaseController {
 	{
 		$recipe = Recipe::find(Input::get('recipe'));
 
-		$new_tags = explode(",", Input::get('tag'));
+		$new_tags = array_unique(array_map('trim', explode(',', Input::get('tag'))));
 
 		foreach ($new_tags as $ntag) {
 			$exist_tag = Tag::where('tag', 'LIKE', $ntag)->first();
