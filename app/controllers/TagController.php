@@ -75,7 +75,12 @@ class TagController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
+		try {
+			$recipe = Tag::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::back()->with('flash_message', 'Tag not found');
+		}
 
 		$tag = Tag::find($id);
 
@@ -91,6 +96,13 @@ class TagController extends \BaseController {
 	 */
 	public function edit($id)
 	{
+		try {
+			$recipe = Tag::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::back()->with('flash_message', 'Tag not found');
+		}
+
 		$tag = Tag::find($id);
 
 		return View::make('tags.edit')->with('tag', $tag);
@@ -105,6 +117,13 @@ class TagController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		try {
+			$recipe = Tag::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::back()->with('flash_message', 'Tag not found');
+		}
+
 		$rules = array(
 			'tag' => 'required',
 		);
@@ -151,21 +170,28 @@ class TagController extends \BaseController {
 	{
 		$recipe = Recipe::find(Input::get('recipe'));
 
-		$exist_tag = Tag::where('tag', 'LIKE', Input::get('tag'))->first();
+		$new_tags = explode(",", Input::get('tag'));
 
-		if (is_null($exist_tag)) {
-			$tag = new Tag;
-			$tag->tag= Input::get('tag');
-			$tag->save();
+		foreach ($new_tags as $ntag) {
+			$exist_tag = Tag::where('tag', 'LIKE', $ntag)->first();
 
-			$recipe->tags()->save($tag);
+			if (is_null($exist_tag)) {
+				$tag = new Tag;
+				$tag->tag= $ntag;
+				$tag->save();
 
-			return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
-		} else {
-			$recipe->tags()->save($exist_tag);
+				$recipe->tags()->save($tag);
 
-			return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
+
+			} else {
+				$recipe->tags()->save($exist_tag);
+
+			}
 		}
+
+
+		return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
+
 	}
 
 	public function detachtag()
