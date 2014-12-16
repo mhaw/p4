@@ -26,7 +26,7 @@ index.blade.php
 					<tr>
 						<th>Name</th>
 						<th>Servings</th>
-						<th>Prep Time</th>
+						<th>Prep Time (minutes)</th>
 						<th>Actions</th>
 					</tr>
 				</thread>

@@ -26,22 +26,22 @@
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         {{ Form::text('servings', '', array('class' => 'form-control', 'id' => 'servings', 'placeholder' => 'How many people does this feed...'))}}
                                     </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                                         {{ Form::text('prep_time', '', array('class' => 'form-control', 'id' => 'prep_time', 'placeholder' => 'How long does the recipe take the make (in minutes)...'))}}
                                     </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
                                         {{ Form::textarea('steps', '', array('class' => 'form-control', 'id' => 'step', 'placeholder' => 'Add your recipe steps here... '))}}
                                     </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                                         {{ Form::textarea('notes', '', array('class' => 'form-control', 'id' => 'notes', 'placeholder' => 'Add some notes about the recipe... '))}}
                                     </div>
 
@@ -49,7 +49,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      {{ Form::submit('Add Recipe', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
+                                      {{ Form::submit('Next', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
                                     </div>
                                 </div>
 			</div>

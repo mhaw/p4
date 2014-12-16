@@ -47,7 +47,7 @@
                 style: {
                 	title: 'Style',
                     width: '20%',
-                    options: ['n/a','diced','minced','pureed','softened','cold','warm']
+                    options: ['n/a','diced','minced','pureed','softened','cold','warm','chopped','grated','mashed']
                 },
                 recipe_id: {
                     list: false,

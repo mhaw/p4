@@ -31,22 +31,22 @@
                                     </div>
                                     
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         {{ Form::text('servings', $recipe->servings, array('class' => 'form-control', 'id' => 'servings'))}}
                                     </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                                         {{ Form::text('prep_time', $recipe->prep_time, array('class' => 'form-control', 'id' => 'prep_time'))}}
                                     </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-fire"></i></span>
                                         {{ Form::textarea('steps', $recipe->steps, array('class' => 'form-control', 'id' => 'step'))}}
                                     </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-align-justify"></i></span>
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                                         {{ Form::textarea('notes', $recipe->notes, array('class' => 'form-control', 'id' => 'notes'))}}
                                     </div>
 
