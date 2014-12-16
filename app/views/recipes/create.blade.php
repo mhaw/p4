@@ -45,12 +45,6 @@
                                         {{ Form::textarea('notes', '', array('class' => 'form-control', 'id' => 'notes', 'placeholder' => 'Add some notes about the recipe... '))}}
                                     </div>
 
-                            <div style="margin-bottom: 25px" class="input-group">
-                                        {{ Form::label('private', 'Private?') }}
-                                        {{ Form::hidden('private', false) }}
-                                        {{ Form::checkbox('private', 'true') }}
-                                    </div>
-
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 

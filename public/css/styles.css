@@ -21,6 +21,10 @@ body {
 	background-color:#DEDEDE;
 }
 
+.tagremove {
+  background-color:#DEDEDE;
+}
+
 /* count indicator near icons */
 .nav>li .count {
   position: absolute;

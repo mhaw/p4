@@ -33,8 +33,14 @@
 
                     <br>
                     <br>
+                    <strong>Notes:</strong> <br>
+                    {{ nl2br($recipe->notes) }}
+
+                    <br>
+                    <br>
                     <h4>Tags</h4>
                     @foreach ($recipe->tags as $tag)
+                    <a href=""><span class="glyphicon glyphicon-remove-circle"></span></a>
                     {{ $tag->tag }}
                     @endforeach
 

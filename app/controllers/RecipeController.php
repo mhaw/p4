@@ -63,7 +63,6 @@ class RecipeController extends \BaseController {
 		$recipe->prep_time = Input::get('prep_time');
 		$recipe->steps = Input::get('steps');
 		$recipe->notes = Input::get('notes');
-		$recipe->public = Input::get('private');
 		if (Auth::check())
 		{
 			$recipe->user_id = Auth::user()->getId();
@@ -91,7 +90,7 @@ class RecipeController extends \BaseController {
 			$recipe = Recipe::findOrFail($id);
 		}
 		catch(Exception $e) {
-			return Redirect::to('tags')->with('flash_message', 'Tag not found');
+			return Redirect::to('recipes')->with('flash_message', 'Recipe not found');
 		}	
 
 		return View::make('recipes.show')->with('recipe', $recipe);
@@ -110,7 +109,7 @@ class RecipeController extends \BaseController {
 			$recipe = Recipe::findOrFail($id);
 		}
 		catch(Exception $e) {
-			return Redirect::to('tags')->with('flash_message', 'Tag not found');
+			return Redirect::to('recipes')->with('flash_message', 'Recipe not found');
 		}	
 
 		return View::make('recipes.edit')->with('recipe', $recipe);
@@ -129,7 +128,7 @@ class RecipeController extends \BaseController {
 			$recipe = Recipe::findOrFail($id);
 		}
 		catch(Exception $e) {
-			return Redirect::to('tags')->with('flash_message', 'Tag not found');
+			return Redirect::to('recipes')->with('flash_message', 'Recipe not found');
 		}		
 
 		$rules = array(
@@ -169,10 +168,20 @@ class RecipeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		try {
+			$recipe = Recipe::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('recipes')->with('flash_message', 'Recipe not found');
+		}
+
+		$recipe->delete();
+
+		return Redirect::to('/recipes')->with('flash_message', 'Recipe successfully deleted.');
 	}
 
 	public function postSearch(){
+
 		$query = Input::get('query');
 
 		$recipes = Recipe::search($query);
@@ -181,7 +190,6 @@ class RecipeController extends \BaseController {
 
 	}
 
-
-
+	
 
 }

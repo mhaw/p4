@@ -63,6 +63,11 @@
                     <br>
                     <h4>Tags</h4>
                     @foreach ($recipe->tags as $tag)
+                    {{ Form::open(array('url' => 'tags/detachtag', 'method' => 'POST', 'style'=>'display:inline-block')) }}           
+                        {{ Form::hidden('tag', $tag->id, array('id' => 'tag')) }}
+                        {{ Form::hidden('recipe', $recipe->id, array('id' => 'recipe')) }}                                    
+                    {{Form::button('<span class="glyphicon glyphicon-remove-circle"></span>', array('type' => 'submit', 'class' => 'btn btn-danger btn-xs'))}}
+                    {{ Form::close() }} 
                     {{ $tag->tag }}
                     @endforeach
                     <br>
@@ -70,6 +75,7 @@
                         {{ Form::text('tag', '', array('class' => 'form-control', 'id' => 'tag', 'placeholder' => 'Tag name... ')) }} 
                         {{ Form::hidden('recipe', $recipe->id, array('id' => 'recipe')) }}                                    
                     {{ Form::submit('Add Tag', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
+                    {{ Form::close() }} 
 
 			</div>
 		</div>  

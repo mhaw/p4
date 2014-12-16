@@ -34,6 +34,7 @@ Route::resource('recipes', 'RecipeController');
 Route::post('ingredients/create', 'IngredientController@postCreate');
 Route::controller('ingredients', 'IngredientController');
 
+Route::post('tags/detachtag', 'TagController@detachtag');
 Route::post('tags/addtag', 'TagController@addtag');
 Route::resource('tags', 'TagController');
 

@@ -9,14 +9,20 @@ class TagController extends \BaseController {
 	 */
 	public function index()
 	{
-		$user_id = Auth::user()->getId();
-		$recipes_ids = Recipe::where('user_id', '=', $user_id)->lists('id');
 
-		$tag_ids = DB::table('recipe_tag')->whereIn('recipe_id', $recipes_ids)->lists('tag_id');
+		try {
+			$user_id = Auth::user()->getId();
+			$recipes_ids = Recipe::where('user_id', '=', $user_id)->lists('id');
 
-		$tags = DB::table('tags')->whereIn('id', $tag_ids)->get(); 
+			$tag_ids = DB::table('recipe_tag')->whereIn('recipe_id', $recipes_ids)->lists('tag_id');
 
-		return View::make('tags.index')->with('tags', $tags);
+			$tags = DB::table('tags')->whereIn('id', $tag_ids)->get(); 
+
+			return View::make('tags.index')->with('tags', $tags);
+		}
+		catch(Exception $e) {
+			return Redirect::back()->with('flash_message', 'There are no tags.');
+		}
 	}
 
 
@@ -129,13 +135,22 @@ class TagController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		try {
+			$recipe = Tag::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::back()->with('flash_message', 'Tag not found');
+		}
+
+		$recipe->delete();
+
+		return Redirect::back()->with('flash_message', 'Tag successfully deleted.');
 	}
 
 	public function addtag()
-
 	{
 		$recipe = Recipe::find(Input::get('recipe'));
+
 		$exist_tag = Tag::where('tag', 'LIKE', Input::get('tag'))->first();
 
 		if (is_null($exist_tag)) {
@@ -151,6 +166,16 @@ class TagController extends \BaseController {
 
 			return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
 		}
+	}
+
+	public function detachtag()
+	{	
+		$recipe = Recipe::find(Input::get('recipe'));
+		$tag = Tag::find(Input::get('tag'));
+
+		$recipe->tags()->detach($tag);
+
+		return Redirect::back()->with('flash_message', 'Tag Updated Successfully!');
 	}
 
 

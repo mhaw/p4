@@ -22,11 +22,7 @@ class CreateRecipesTable extends Migration {
 			$table->integer('prep_time');
 			$table->integer('ingredient_id')->unsigned()->nullable();
 			$table->text('steps');
-			$table->text('pic_link');
 			$table->text('notes');
-			$table->string('source_name');
-			$table->text('source_link');
-			$table->boolean('public');
 			$table->integer('user_id')->unsigned();
 
 			$table->foreign('ingredient_id')->references('id')->on('ingredients');
