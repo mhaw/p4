@@ -21,7 +21,7 @@ index.blade.php
                 <br>
 
                 <h2>Welcome, {{ Auth::user()->first_name }}</h2>
-                <p>SpiceRack is a recipe management tool that allows you add, view, search for, and edit recipes.</p>
+                <p>SpiceRack is a recipe management tool that allows you to add, view, tag, search for, and edit recipes.</p>
 
 			</div>
 		</div>

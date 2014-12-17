@@ -1,4 +1,4 @@
-# Mike Haw's P4
+# Mike Haw's P4 "SpiceRack"
 
 ## Live URL
 Live URL <http://p4.mikehaw.me>

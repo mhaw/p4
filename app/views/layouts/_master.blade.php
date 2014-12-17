@@ -80,8 +80,6 @@
 
 </nav>
 
-
-        
 <div class="container-fluid">
           <div class="row">
         @if(Session::get('flash_message'))
@@ -103,8 +101,5 @@
 
     </footer>
 
-
-
-      
   </body>
 </html>
