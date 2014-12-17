@@ -7,7 +7,7 @@ Live URL <http://p4.mikehaw.me>
 SpiceRack is a recipe management tool that allows logged in users to add, view, and edit recipes. Users can also tag and search for recipes in their collection.
 
 ## Demo
-
+Demo <http://screencast.com/t/Wf1bSQVszP2Q>
 
 ## Details
 #####Key Features
@@ -20,9 +20,6 @@ SpiceRack is a recipe management tool that allows logged in users to add, view, 
 Julia Child  
 Email: julia@cooks.com  
 Password: spicerack  
-
-#####Issues
-
 
 ## Outside Code
 + jQuery <http://jquery.com/>
