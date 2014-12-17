@@ -43,6 +43,7 @@ Password: spicerack
 + ~~Fix flash messages display~~
 + ~~Display only tags related to logged in user and their recipes~~
 + Private vs. Public Recipes
++ ~~Search results conditional on logged on user~~
 + ~~Search capabilities~~
 + ~~Convert comma seperated tag input to mutiple tag entries~~
 

@@ -184,9 +184,16 @@ class RecipeController extends \BaseController {
 
 		$query = Input::get('query');
 
-		$recipes = Recipe::search($query);
+		$collection = Recipe::search($query);
 
-		return View::make('recipes.search')->with('recipes', $recipes);
+		$user_recipes = $collection->filter(function($recipe){
+
+			if($recipe->user_id == Auth::user()->getId()) {
+				return true;
+			}
+		});
+
+		return View::make('recipes.search')->with('recipes', $user_recipes);
 
 	}
 

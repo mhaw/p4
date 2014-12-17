@@ -41,7 +41,6 @@ index.blade.php
 						<a class="btn btn-small btn-success" href="recipes/{{ $recipe->id }}">Show</a>
                 		<a class="btn btn-small btn-info" href="recipes/{{ $recipe->id }}/edit">Edit</a>
                 		{{ Form::open(array('url' => 'recipes/' . $recipe->id, 'class' => 'pull-right')) }}
-                		{{ Form::open(array('url' => 'recipes/' . $recipe->id, 'class' => '')) }}
                     		{{ Form::hidden('_method', 'Delete') }}
                     		{{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
                 		{{ Form::close() }}

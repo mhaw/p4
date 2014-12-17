@@ -25,7 +25,7 @@ class CreateRecipesTable extends Migration {
 			$table->text('notes');
 			$table->integer('user_id')->unsigned();
 
-			$table->foreign('ingredient_id')->references('id')->on('ingredients');
+			$table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');
 			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}

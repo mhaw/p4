@@ -56,9 +56,14 @@
                                     <div class="col-sm-12 controls">
                                     <br>
                                       {{ Form::submit('Save', array('class' => 'btn btn-success', 'id' => 'btn-login', 'href' => '')) }}
-                                    </div>
-                                </div>
+                                    
                     		{{ Form::close() }} 
+                            {{ Form::open(array('url' => 'recipes/' . $recipe->id, 'class' => 'pull-right', 'style'=>'display:inline-block')) }}
+                                {{ Form::hidden('_method', 'Delete') }}
+                                {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
+                            {{ Form::close() }}
+                            </div>
+                    </div>
 			</div>
                     <br>
                     <br>

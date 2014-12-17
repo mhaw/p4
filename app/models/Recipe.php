@@ -12,8 +12,6 @@ class Recipe extends Eloquent {
 
     public static function search($query) {
 
-        	$userid = Auth::user()->getId();
-
             if($query) {
 
         	$recipes = Recipe::with('ingredient', 'tags')

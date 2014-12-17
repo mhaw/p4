@@ -15,7 +15,7 @@ class AddRecipeIdFieldIngredientsTable extends Migration {
 		Schema::table('ingredients', function($table) {
 			$table->integer('recipe_id')->unsigned();
 			
-			$table->foreign('recipe_id')->references('id')->on('recipes');
+			$table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
 		});
 	}			
 					

@@ -40,9 +40,7 @@
 			</div>
 			</div>
 		</div>  
-        <br>
-        <br>  
-        <div class="well"><h4 class="text-center">View All Tags - Add New Tag</h4></div>
+
 	</div>
 @stop
 
