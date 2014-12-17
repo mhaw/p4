@@ -17,9 +17,9 @@ SpiceRack is a recipe management tool that allows logged in users to add, view, 
 + Ability to search across recipes, ingredients, and tags
 
 #####Sample Login
-Julia Child
-Email: julia@cooks.com
-Password: spicerack
+Julia Child  
+Email: julia@cooks.com  
+Password: spicerack  
 
 #####Issues
 

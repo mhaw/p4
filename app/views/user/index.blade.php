@@ -14,7 +14,17 @@ index.blade.php
 	@include('partials.sidenav')
 
 	<div class="col-sm-9 col-md-10 main">
-		<p>Welcome, {{ Auth::user()->first_name }}</p>
+		<div class="container">
+			<div id="home" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+
+                <br>
+                <br>
+
+                <h2>Welcome, {{ Auth::user()->first_name }}</h2>
+                <p>SpiceRack is a recipe management tool that allows you add, view, search for, and edit recipes.</p>
+
+			</div>
+		</div>
 	</div>
 @stop
 

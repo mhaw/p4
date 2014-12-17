@@ -24,7 +24,7 @@ search.blade.php
 			<table class="table table-bordered table-hover">
 				<thread>
 					<tr>
-						<th>Name</th>
+						<th>Recipe Name</th>
 						<th>Actions</th>
 					</tr>
 				</thread>
